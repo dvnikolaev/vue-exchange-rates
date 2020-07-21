@@ -5,8 +5,7 @@
 </template>
 
 <script>
-export default {
-}
+export default {};
 </script>
 
 <style>
@@ -32,8 +31,8 @@ export default {
 }
 
 @media screen and (max-width: 1265px) {
-.header {
-  padding: 15px;
-}
+  .header {
+    padding: 15px;
+  }
 }
 </style>

@@ -47,4 +47,10 @@ export default {
   margin: 0;
   text-align: center;
 }
+
+@media screen and (max-width: 1120px) {
+  .card-month__name {
+    font-size: 20px;
+  }
+}
 </style>

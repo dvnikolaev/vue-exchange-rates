@@ -42,8 +42,7 @@ function getNamePrevMonths(num) {
 .month-list {
   display: flex;
   list-style: none;
-  border-radius: 10px;
-  padding: 5px;
+  border-radius: 5px;
   margin: 10px auto;
   max-width: max-content;
   background-color: #f7f8fc;
@@ -61,5 +60,14 @@ function getNamePrevMonths(num) {
 }
 .month-list__item::first-letter {
  text-transform: uppercase;
+}
+
+@media screen and (max-width: 1120px) {
+  .month-list {
+    padding: 5px 10px;
+  }
+  .month-list__item {
+    padding: 8px 20px;
+  }
 }
 </style>

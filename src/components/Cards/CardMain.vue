@@ -11,33 +11,39 @@
 <script>
 export default {
   props: {
-    mainCurrency: Object
-  }
-}
+    mainCurrency: Object,
+  },
+};
 </script>
 
 <style>
+.card-main {
+  grid-column: span 4;
+  background-color: var(--main-black-color);
+  padding: 20px 40px;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0 5px 25px rgba(4, 26, 90, 0.34);
+}
+.card-main__header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+}
+.card-main__currency {
+  text-transform: uppercase;
+}
+.card-main__value {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 109px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1120px) {
   .card-main {
-    grid-column: span 4;
-    background-color: var(--main-black-color);
-    padding: 20px 40px;
-    border-radius: 10px;
-    color: white;
-    box-shadow: 0 5px 25px rgba(4,26,90, .34);
+    padding: 20px;
   }
-  .card-main__header {
-    display: flex;
-    justify-content: space-between;
-    font-size: 24px;
-  }
-  .card-main__currency {
-    text-transform: uppercase;
-  }
-  .card-main__value {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 109px;
-    font-weight: bold;
-  }
+}
 </style>
