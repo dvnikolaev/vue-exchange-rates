@@ -147,4 +147,13 @@ async function getRates(value) {
   column-gap: 30px;
   grid-template-columns: repeat(12, 1fr);
 }
+
+@media screen and (max-width: 1265px) {
+.main {
+  grid-template-rows: 240px repeat(4, 140px);
+}
+.card-secondary__wrapper {
+  gap: 30px;
+}
+}
 </style>

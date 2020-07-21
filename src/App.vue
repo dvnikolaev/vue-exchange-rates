@@ -33,4 +33,10 @@ body {
   background-color:#F7F8FC;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 1265px) {
+.container {
+  height: auto;
+}
+}
 </style>

@@ -30,4 +30,10 @@ export default {
 .header-list__item:not(:first-of-type) {
   margin-left: 40px;
 }
+
+@media screen and (max-width: 1265px) {
+.header {
+  padding: 15px;
+}
+}
 </style>

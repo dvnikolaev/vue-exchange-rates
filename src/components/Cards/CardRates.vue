@@ -108,9 +108,10 @@ export default {
   color: #e84166;
 }
 
-@media screen and (max-width: 1260px) {
+@media screen and (max-width: 1265px) {
 .rates {
   grid-row: span 5;
+  padding: 20px;
 }
 }
 </style>

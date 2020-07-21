@@ -55,4 +55,12 @@ export default {
   font-size: 36px;
   font-weight: bold;
 }
+
+@media screen and (max-width: 1265px) {
+.card-secondary {
+  grid-column: span 6;
+  grid-row:auto;
+  max-width: none;
+}
+}
 </style>
