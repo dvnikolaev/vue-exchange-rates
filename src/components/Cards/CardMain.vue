@@ -18,9 +18,8 @@ export default {
 
 <style>
   .card-main {
-    grid-column: span 2;
+    grid-column: span 4;
     background-color: var(--main-black-color);
-    max-width: 270px;
     padding: 20px 40px;
     border-radius: 10px;
     color: white;
@@ -38,7 +37,7 @@ export default {
     display: block;
     text-align: center;
     margin-top: 20px;
-    font-size: 52px;
+    font-size: 109px;
     font-weight: bold;
   }
 </style>
