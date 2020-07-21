@@ -12,4 +12,10 @@
   grid-column: span 8;
   grid-row: 3 / span 2;
 }
+
+@media screen and (max-width: 1260px) {
+.card-graphic {
+  grid-row: 4 / span 2;
+}
+}
 </style>
