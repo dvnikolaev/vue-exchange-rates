@@ -1,7 +1,10 @@
 <template>
   <main class="main">
-    <CardMain :mainCurrency="mainCurrency" />
+    <div class="card-main__wrapper">
+      <CardMain :mainCurrency="mainCurrency" />
+      
     <CardMonth />
+    </div>
     <CardSecondary 
       v-for="(rate,index) in mainRates"
       :key="index"
@@ -10,6 +13,8 @@
       :rates="rates" 
       @update:secondary="updateMainRates" 
     />
+    
+      <CardGraphic />
     <CardRates 
       :mainCurrencyName="mainCurrency.name"
       :rates="rates"
@@ -22,6 +27,8 @@ import CardMain from "@/components/Cards/CardMain.vue";
 import CardSecondary from "@/components/Cards/CardSecondary.vue";
 import CardRates from "@/components/Cards/CardRates.vue";
 import CardMonth from "@/components/Cards/CardMonths/CardMonth.vue";
+
+import CardGraphic from "@/components/Cards/CardGraphic/CardGraphic";
 
 import axios from "axios";
 
@@ -85,7 +92,8 @@ export default {
     CardSecondary,
     CardMain,
     CardRates,
-    CardMonth
+    CardMonth,
+    CardGraphic
   },
 };
 
@@ -118,7 +126,21 @@ async function getRates(value) {
 .main {
   display: grid;
   gap: 30px;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 250px repeat(3, 140px);
   padding: 35px;
+}
+.card-main__wrapper {
+  display: grid;
+  gap: 30px;
+  grid-column: span 8;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+@media screen and (max-width: 1250px) {
+.main {
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(5, 140px);
+}
 }
 </style>
