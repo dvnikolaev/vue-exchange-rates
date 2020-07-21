@@ -2,23 +2,24 @@
   <main class="main">
     <div class="card-main__wrapper">
       <CardMain :mainCurrency="mainCurrency" />
-      
-    <CardMonth />
+      <CardMonth />
     </div>
-    <CardSecondary 
-      v-for="(rate,index) in mainRates"
-      :key="index"
-      :rate="rate"
-      :index="index"
-      :rates="rates" 
-      @update:secondary="updateMainRates" 
-    />
-    
-      <CardGraphic />
-    <CardRates 
+    <div class="card-secondary__wrapper">
+      <CardSecondary
+        v-for="(rate, index) in mainRates"
+        :key="index"
+        :rate="rate"
+        :index="index"
+        :rates="rates"
+        @update:secondary="updateMainRates"
+      />
+    </div>
+    <CardGraphic />
+    <CardRates
       :mainCurrencyName="mainCurrency.name"
       :rates="rates"
-      @update:rates="changeRates"/>
+      @update:rates="changeRates"
+    />
   </main>
 </template>
 
@@ -40,20 +41,18 @@ export default {
         value: 1,
       },
       rates: [],
-      mainRates: [
-      ]
+      mainRates: [],
     };
   },
   methods: {
     changeRates(value) {
-      this.getRates(value)
+      this.getRates(value);
     },
     updateMainRates(index, item) {
-      let foundRate = this.rates.find(element => item === element.name);
-      this.mainRates.splice(index,1,foundRate);
+      let foundRate = this.rates.find((element) => item === element.name);
+      this.mainRates.splice(index, 1, foundRate);
     },
-    async getRates(value = 'USD') {
-
+    async getRates(value = "USD") {
       const { rates, historyRates } = await getRates(value);
 
       let arr = [];
@@ -65,61 +64,66 @@ export default {
         arr.push({
           name: key,
           value: rates[key].toFixed(2),
-          change: ((rates[key] - historyRates[key]).toFixed(2) / historyRates[key].toFixed(2)).toFixed(2)
-        })
+          change: (
+            (rates[key] - historyRates[key]).toFixed(2) /
+            historyRates[key].toFixed(2)
+          ).toFixed(2),
+        });
       }
 
-
-      this.mainRates = arr.filter(item => {
-        return this.mainRates.some(elem => item.name === elem.name)
-      })
+      this.mainRates = arr.filter((item) => {
+        return this.mainRates.some((elem) => item.name === elem.name);
+      });
 
       this.rates = arr;
-    }
+    },
   },
   async created() {
     await this.getRates();
 
     let baseMainRates = ["USD", "EUR", "RUB", "CAD"];
 
-    this.mainRates = this.rates.filter(item => {
-      return baseMainRates.some(elem => {
+    this.mainRates = this.rates.filter((item) => {
+      return baseMainRates.some((elem) => {
         return item.name === elem;
-      })
-    })
+      });
+    });
   },
   components: {
     CardSecondary,
     CardMain,
     CardRates,
     CardMonth,
-    CardGraphic
+    CardGraphic,
   },
 };
 
 function getPrevDay() {
-  let prevMilliSeconds = Date.now() - (1000 * 60 * 60 * 24 * 4);
+  let prevMilliSeconds = Date.now() - 1000 * 60 * 60 * 24 * 4;
   let day = new Date(prevMilliSeconds).getDate();
   let month = new Date(prevMilliSeconds).getMonth();
   let year = new Date(prevMilliSeconds).getFullYear();
 
-  return `${year}-${month}-${day}`
+  return `${year}-${month}-${day}`;
 }
 
 async function getRates(value) {
   // Определяем предыдущий день
   const prevDay = getPrevDay();
   // Запрашиваем курс валют
-  const { data: { rates }} = await axios.get(`https://api.exchangerate.host/latest?base=${value}`);
+  const {
+    data: { rates },
+  } = await axios.get(`https://api.exchangerate.host/latest?base=${value}`);
   // Запрашиваем курс валют за предыдущий день
-  const { data: { rates: historyRates }} = await axios.get(`https://api.exchangerate.host/${prevDay}?base=${value}`);
+  const {
+    data: { rates: historyRates },
+  } = await axios.get(`https://api.exchangerate.host/${prevDay}?base=${value}`);
 
   return {
     rates,
-    historyRates
-  }
+    historyRates,
+  };
 }
-
 </script>
 
 <style>
@@ -136,11 +140,11 @@ async function getRates(value) {
   grid-column: span 8;
   grid-template-columns: repeat(12, 1fr);
 }
-
-@media screen and (max-width: 1250px) {
-.main {
+.card-secondary__wrapper {
+  grid-row: 2;
+  display: grid;
+  grid-column: span 8;
+  column-gap: 30px;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(5, 140px);
-}
 }
 </style>
