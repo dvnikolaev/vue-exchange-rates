@@ -35,13 +35,16 @@ export default {
 
 <style>
 .card-month {
-  grid-column: span 2;
-  grid-row: 3 / span 2;
-  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  grid-column: span 8;
+  padding: 20px 20px;
   background: white;
   border-radius: 10px;
 }
 .card-month__name {
   margin: 0;
+  text-align: center;
 }
 </style>
