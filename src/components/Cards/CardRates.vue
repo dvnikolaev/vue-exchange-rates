@@ -107,4 +107,10 @@ export default {
 .rates__item-value--red {
   color: #e84166;
 }
+
+@media screen and (max-width: 1260px) {
+.rates {
+  grid-row: span 5;
+}
+}
 </style>
