@@ -44,6 +44,7 @@ function getNamePrevMonths(num) {
   list-style: none;
   border-radius: 10px;
   padding: 5px;
+  margin: 10px auto;
   max-width: max-content;
   background-color: #f7f8fc;
   padding: 5px 10px;
