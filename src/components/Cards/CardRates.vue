@@ -58,12 +58,11 @@ export default {
 <style>
 /* Блок всех курсов валют */
 .rates {
-  grid-row: 1 / 5;
-  grid-column: 5 / 7;
+  grid-column: span 4;
+  grid-row: span 4;
   padding: 30px 40px;
   border-radius: 10px;
   background-color: white;
-  max-height: 500px;
   overflow-y: scroll;
 }
 .rates__search {
