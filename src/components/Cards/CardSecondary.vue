@@ -36,8 +36,9 @@ export default {
 
 <style>
 .card-secondary {
-  grid-row: 2 / 2;
-  padding: 20px 40px;
+  grid-row: 2;
+  grid-column: span 2;
+  padding: 20px;
   border-radius: 10px;
   background-color: white;
   max-width: 252px;
