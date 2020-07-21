@@ -21,7 +21,7 @@
 import CardMain from "@/components/Cards/CardMain.vue";
 import CardSecondary from "@/components/Cards/CardSecondary.vue";
 import CardRates from "@/components/Cards/CardRates.vue";
-import CardMonth from "@/components/Cards/CardMonth.vue";
+import CardMonth from "@/components/Cards/CardMonths/CardMonth.vue";
 
 import axios from "axios";
 
