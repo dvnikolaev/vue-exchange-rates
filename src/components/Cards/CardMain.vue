@@ -46,4 +46,12 @@ export default {
     padding: 20px;
   }
 }
+@media screen and (max-width: 955px) {
+  .card-main {
+    grid-column: span 12;
+  }
+  .card-main__value {
+    font-size: 55px;
+  }
+}
 </style>

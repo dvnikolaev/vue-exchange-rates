@@ -14,8 +14,14 @@
 }
 
 @media screen and (max-width: 1265px) {
-.card-graphic {
-  grid-row: 4 / span 2;
+  .card-graphic {
+    grid-row: 4 / span 2;
+  }
 }
+@media screen and (max-width: 955px) {
+  .card-graphic {
+    grid-row: 5 / span 2;
+    grid-column: span 12;
+  }
 }
 </style>

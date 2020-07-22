@@ -53,4 +53,9 @@ export default {
     font-size: 20px;
   }
 }
+@media screen and (max-width: 955px) {
+  .card-month {
+    grid-column: span 12;
+  }
+}
 </style>

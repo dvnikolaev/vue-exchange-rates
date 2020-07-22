@@ -1,7 +1,7 @@
 <template>
   <article class="card-secondary">
     <div class="secondary__header">
-      <RatesList 
+      <RatesList
         :rateName="rate.name"
         :rates="rates"
         @update:secondary="updateRate"
@@ -28,9 +28,9 @@ export default {
   },
   methods: {
     updateRate(item) {
-      this.$emit('update:secondary', this.index, item);
-    }
-  }
+      this.$emit("update:secondary", this.index, item);
+    },
+  },
 };
 </script>
 
@@ -57,10 +57,15 @@ export default {
 }
 
 @media screen and (max-width: 1265px) {
-.card-secondary {
-  grid-column: span 6;
-  grid-row:auto;
-  max-width: none;
+  .card-secondary {
+    grid-column: span 6;
+    grid-row: auto;
+    max-width: none;
+  }
 }
+@media screen and (max-width: 955px) {
+  .secondary__value {
+    text-align: center;
+  }
 }
 </style>
