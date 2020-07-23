@@ -176,4 +176,9 @@ async function getRates(value) {
     gap: 20px;
   }
 }
+@media screen and (max-width: 840px) {
+  .card-secondary__wrapper {
+    grid-column: span 12;
+  }
+}
 </style>

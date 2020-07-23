@@ -70,4 +70,10 @@ function getNamePrevMonths(num) {
     padding: 8px 20px;
   }
 }
+@media screen and (max-width: 840px) {
+  .month-list__item {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+}
 </style>

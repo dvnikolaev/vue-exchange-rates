@@ -131,4 +131,21 @@ export default {
     grid-row: span 4;
   }
 }
+@media screen and (max-width: 840px) {
+  .rates {
+    grid-row: span 2;
+  }
+  .rates__header {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .rates__search {
+    padding: 5px
+  }
+}
+@media screen and (max-width: 682px) {
+  .rates {
+    grid-row: 5 / span 2;
+  }
+}
 </style>

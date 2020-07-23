@@ -58,4 +58,9 @@ export default {
     grid-column: span 12;
   }
 }
+@media screen and (max-width: 840px) {
+  .card-month__name {
+    font-size: 16px;
+  }
+}
 </style>
