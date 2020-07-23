@@ -76,4 +76,12 @@ function getNamePrevMonths(num) {
     font-size: 14px;
   }
 }
+@media screen and (max-width: 682px) {
+  .month-list {
+    padding: 5px 15px; 
+  }
+  .month-list__item {
+    font-size: 16px;
+  }
+}
 </style>

@@ -63,4 +63,9 @@ export default {
     font-size: 16px;
   }
 }
+@media screen and (max-width: 682px) {
+  .card-month__name {
+    font-size: 20px; 
+  }
+}
 </style>

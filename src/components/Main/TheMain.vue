@@ -181,4 +181,9 @@ async function getRates(value) {
     grid-column: span 12;
   }
 }
+@media screen and (max-width: 682px) {
+  .card-main__wrapper {
+    grid-column: span 12; 
+  }
+}
 </style>
