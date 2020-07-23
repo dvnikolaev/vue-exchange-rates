@@ -191,4 +191,17 @@ async function getRates(value) {
     grid-template-rows: 150px 240px repeat(6, 140px);
   }
 }
+@media screen and (max-width: 421px) {
+  .main {
+    grid-template-rows: 150px 240px repeat(8, 140px);
+  }
+  .card-secondary__wrapper {
+    grid-row: 3 / span 4;
+  }
+}
+@media screen and (max-width: 371px) {
+  .main {
+    grid-template-rows: 150px 290px repeat(8, 140px);
+  }
+}
 </style>

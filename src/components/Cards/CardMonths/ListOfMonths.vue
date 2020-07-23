@@ -84,4 +84,10 @@ function getNamePrevMonths(num) {
     font-size: 16px;
   }
 }
+@media screen and (max-width: 371px) {
+  .month-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
 </style>

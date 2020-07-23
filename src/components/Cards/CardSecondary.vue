@@ -68,4 +68,9 @@ export default {
     text-align: center;
   }
 }
+@media screen and (max-width: 421px) {
+  .card-secondary {
+    grid-column: span 12;
+  }
+}
 </style>
