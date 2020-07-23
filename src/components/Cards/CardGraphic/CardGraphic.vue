@@ -29,4 +29,9 @@
     grid-column: span 6;
   }
 }
+@media screen and (max-width: 615px) {
+  .card-graphic {
+    grid-column: span 12;
+  }
+}
 </style>

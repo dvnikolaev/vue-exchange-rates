@@ -186,4 +186,9 @@ async function getRates(value) {
     grid-column: span 12; 
   }
 }
+@media screen and (max-width: 615px) {
+  .main {
+    grid-template-rows: 150px 240px repeat(6, 140px);
+  }
+}
 </style>

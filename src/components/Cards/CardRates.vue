@@ -148,4 +148,10 @@ export default {
     grid-row: 5 / span 2;
   }
 }
+@media screen and (max-width: 615px) {
+  .rates {
+    grid-row: 7 / span 2;
+    grid-column: span 12;
+  }
+}
 </style>
