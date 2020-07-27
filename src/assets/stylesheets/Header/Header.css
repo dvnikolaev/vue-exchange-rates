@@ -1,8 +1,6 @@
 /* Блок хедер */
 .header {
-  display: flex;
-  align-items: center;
-  background-color: #0e1731;
+  background-color: var(--main-black-color);
   padding: 35px;
   color: #ebebeb;
 }
@@ -14,5 +12,10 @@
 @media screen and (max-width: 1265px) {
   .header {
     padding: 15px;
+  }
+}
+@media screen and (max-width: 682px) {
+  .header__header {
+    text-align: center;
   }
 }
