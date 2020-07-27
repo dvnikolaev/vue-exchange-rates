@@ -7,11 +7,13 @@
   background-color: white;
   overflow-y: scroll;
 }
+/* Поиск по валюте */
 .rates__search {
   width: 100%;
   padding: 10px 5px;
   font-size: 14px;
 }
+/* Хедер */
 .rates__header {
   display: flex;
   justify-content: space-between;
@@ -19,11 +21,13 @@
   color: var(--main-black-color);
   margin-top: 10px;
 }
+/* Список валют */
 .rates__list {
   margin: 20px -10px;
   padding: 0;
   list-style: none;
 }
+/* Элемент списка */
 .rates__item {
   display: flex;
   justify-content: space-between;
@@ -37,6 +41,7 @@
 .rates__item:not(:first-of-type) {
   margin-top: 25px;
 }
+/* Активный элемент списка */
 .rates__item--active {
   background-color: #d8dae2;
 }

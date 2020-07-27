@@ -1,3 +1,4 @@
+/* Карточка основной валюты */
 .card-main {
   grid-column: span 4;
   background-color: var(--main-black-color);
@@ -6,14 +7,17 @@
   color: white;
   box-shadow: 0 5px 25px rgba(4, 26, 90, 0.34);
 }
+/* Хедер */
 .card-main__header {
   display: flex;
   justify-content: space-between;
   font-size: 24px;
 }
+/* Имя валюты */
 .card-main__currency {
   text-transform: uppercase;
 }
+/* Единица */
 .card-main__value {
   display: block;
   text-align: center;

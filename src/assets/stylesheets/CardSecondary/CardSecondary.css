@@ -1,3 +1,4 @@
+/* Карточка вторичных валют */
 .card-secondary {
   grid-row: 2;
   grid-column: span 3;
@@ -7,11 +8,13 @@
   max-width: 252px;
   position: relative;
 }
+/* Хедер */
 .secondary__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+/* Курс к основной валюте */
 .secondary__value {
   display: block;
   margin-top: 30px;

@@ -1,3 +1,4 @@
+/* Список месяцев */
 .month-list {
   display: flex;
   list-style: none;
@@ -7,11 +8,13 @@
   background-color: #f7f8fc;
   padding: 5px 10px;
 }
+/* Месяц */
 .month-list__item {
   padding: 14px 27px;
   cursor: pointer;
   color: #0e1731;
 }
+/* Активный месяц */
 .month-list__item--active {
   background-color: white;
   font-weight: bold;

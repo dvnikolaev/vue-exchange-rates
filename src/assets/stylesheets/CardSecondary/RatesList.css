@@ -1,12 +1,11 @@
+/* Имя валюты */
 .secondary__name {
   font-size: 18px;
 }
-
 /* Иконка стрелочки вниз*/
 .secondary-rates__icon {
   margin-left: 10px;
 }
-
 .secondary-rates__icon:hover + .secondary-rates__list {
   display: block;
 }

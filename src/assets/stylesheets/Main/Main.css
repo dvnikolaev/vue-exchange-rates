@@ -1,3 +1,4 @@
+/* Блок мейн */
 .main {
   display: grid;
   gap: 30px;
@@ -5,12 +6,14 @@
   grid-template-rows: 250px repeat(3, 140px);
   padding: 35px;
 }
+/* Обертка основной валюты и курсы за пред. месяцы */
 .card-main__wrapper {
   display: grid;
   gap: 30px;
   grid-column: span 8;
   grid-template-columns: repeat(12, 1fr);
 }
+/* Обертка вторичных валют */
 .card-secondary__wrapper {
   grid-row: 2;
   display: grid;
