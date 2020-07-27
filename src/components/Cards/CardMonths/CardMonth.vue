@@ -1,7 +1,7 @@
 <template>
   <article class="card-month">
     <header class="card-month__header">
-      <h2 class="card-month__name">Курс валют за предыщие месяцы</h2>
+      <h2 class="card-month__name">Курс доллара за предыщие месяцы</h2>
     </header>
     <ListOfMonths
       :activeMonth="activeMonth"

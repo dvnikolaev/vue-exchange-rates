@@ -25,10 +25,10 @@ export default {
     }
   },
   async created() {
-    let { data: { rates: firstMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(1)}?base=USD&symbols=USD,EUR,RUB&places=2`);
-    let { data: { rates: secondMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(2)}?base=USD&symbols=USD,EUR,RUB&places=2`);
-    let { data: { rates: thirdMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(3)}?base=USD&symbols=USD,EUR,RUB&places=2`);
-    let { data: { rates: fourthMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(4)}?base=USD&symbols=USD,EUR,RUB&places=2`);
+    let { data: { rates: firstMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(1)}?base=USD&symbols=CAD,EUR,RUB&places=2`);
+    let { data: { rates: secondMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(2)}?base=USD&symbols=CAD,EUR,RUB&places=2`);
+    let { data: { rates: thirdMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(3)}?base=USD&symbols=CAD,EUR,RUB&places=2`);
+    let { data: { rates: fourthMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(4)}?base=USD&symbols=CAD,EUR,RUB&places=2`);
 
     for (let rate in firstMonth) {
       this.rates.push(
