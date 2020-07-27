@@ -29,7 +29,6 @@ body {
 }
 .container {
   max-width: 1600px;
-  height: 1000px;
   background-color:#F7F8FC;
   margin: 0 auto;
 }
