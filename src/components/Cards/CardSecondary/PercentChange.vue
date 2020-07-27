@@ -31,16 +31,5 @@ export default {
 </script>
 
 <style>
-.secondary__percent {
-  font-size: 14px;
-}
-.secondary__percent--green {
-  color: #00bb75;
-}
-.secondary__percent--red {
-  color: #e84166;
-}
-.secondary__percent-icon {
-  margin-right: 5px;
-}
+@import "../../../assets/stylesheets/CardSecondary/PercentChange.css";
 </style>

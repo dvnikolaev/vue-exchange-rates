@@ -1,0 +1,9 @@
+.card-month-rates {
+  list-style: none;
+  padding: 0 10px;
+}
+.card-month-rates__item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}

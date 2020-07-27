@@ -65,37 +65,5 @@ export default {
 </script>
 
 <style>
-.card-graphic {
-  background-color: white;
-  border-radius: 10px;
-  grid-column: span 8;
-  grid-row: 3 / span 2;
-}
-
-@media screen and (max-width: 1265px) {
-  .card-graphic {
-    grid-row: 4 / span 2;
-  }
-}
-@media screen and (max-width: 955px) {
-  .card-graphic {
-    grid-row: 5 / span 2;
-    grid-column: span 12;
-  }
-}
-@media screen and (max-width: 682px) {
-  .card-graphic {
-    grid-column: span 6;
-  }
-}
-@media screen and (max-width: 615px) {
-  .card-graphic {
-    grid-column: span 12;
-  }
-}
-@media screen and (max-width: 421px) {
-  .card-graphic {
-    grid-row: 7 / span 2;
-  }
-}
+@import "../../../assets/stylesheets/CardGraphic/CardGraphic.css";
 </style>

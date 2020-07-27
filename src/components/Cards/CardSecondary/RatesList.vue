@@ -35,40 +35,5 @@ export default {
 </script>
 
 <style>
-.secondary__name {
-  font-size: 18px;
-}
-
-/* Иконка стрелочки вниз*/
-.secondary-rates__icon {
-  margin-left: 10px;
-}
-
-.secondary-rates__icon:hover + .secondary-rates__list {
-  display: block;
-}
-/* Список валют */
-.secondary-rates__list {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 100px;
-  max-height: 250px;
-  overflow-y: scroll;
-  border: 0.5px solid black;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  background-color: white;
-  display: none;
-}
-.secondary-rates__list:hover {
-  display: block;
-}
-/* Наименование валюты */
-.secondary-rates__item:hover {
-  cursor: pointer;
-  background-color: lightskyblue;
-}
+@import "../../../assets/stylesheets/CardSecondary/RatesList.css";
 </style>

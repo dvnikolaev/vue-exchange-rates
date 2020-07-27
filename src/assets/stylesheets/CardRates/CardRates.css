@@ -1,0 +1,92 @@
+/* Блок всех курсов валют */
+.rates {
+  grid-column: span 4;
+  grid-row: span 4;
+  padding: 30px 40px;
+  border-radius: 10px;
+  background-color: white;
+  overflow-y: scroll;
+}
+.rates__search {
+  width: 100%;
+  padding: 10px 5px;
+  font-size: 14px;
+}
+.rates__header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  color: var(--main-black-color);
+  margin-top: 10px;
+}
+.rates__list {
+  margin: 20px -10px;
+  padding: 0;
+  list-style: none;
+}
+.rates__item {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  padding: 10px;
+}
+.rates__item:hover {
+  cursor: pointer;
+  background-color: #edeff7;
+}
+.rates__item:not(:first-of-type) {
+  margin-top: 25px;
+}
+.rates__item--active {
+  background-color: #d8dae2;
+}
+.rates__item--active:hover {
+  background-color: #d8dae2;
+}
+.rates__item-value--green {
+  color: #00bb75;
+}
+.rates__item-value--red {
+  color: #e84166;
+}
+
+@media screen and (max-width: 1265px) {
+  .rates {
+    grid-row: span 5;
+    padding: 20px;
+  }
+}
+@media screen and (max-width: 955px) {
+  .rates {
+    grid-column: span 6;
+    grid-row: span 4;
+  }
+}
+@media screen and (max-width: 840px) {
+  .rates {
+    grid-row: span 2;
+  }
+  .rates__header {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .rates__search {
+    padding: 5px
+  }
+}
+@media screen and (max-width: 682px) {
+  .rates {
+    grid-row: 5 / span 2;
+  }
+}
+@media screen and (max-width: 615px) {
+  .rates {
+    grid-row: 7 / span 2;
+    grid-column: span 12;
+  }
+}
+@media screen and (max-width: 421px) {
+  .rates {
+    grid-row: 9 / span 2;
+  }
+}

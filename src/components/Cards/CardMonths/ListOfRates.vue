@@ -52,13 +52,5 @@ function getDateString(num) {
 </script>
 
 <style>
-.card-month-rates {
-  list-style: none;
-  padding: 0 10px;
-}
-.card-month-rates__item {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 5px;
-}
+@import "../../../assets/stylesheets/CardMonth/ListOfRates.css";
 </style>

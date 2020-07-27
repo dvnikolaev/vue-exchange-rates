@@ -1,0 +1,39 @@
+.card-month {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  grid-column: span 8;
+  padding: 20px 20px;
+  background: white;
+  border-radius: 10px;
+}
+.card-month__name {
+  margin: 0;
+  text-align: center;
+}
+
+@media screen and (max-width: 1120px) {
+  .card-month__name {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 955px) {
+  .card-month {
+    grid-column: span 12;
+  }
+}
+@media screen and (max-width: 840px) {
+  .card-month__name {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 682px) {
+  .card-month__name {
+    font-size: 20px; 
+  }
+}
+@media screen and (max-width: 421px) {
+  .card-month__name {
+    font-size: 17px;
+  }
+}
