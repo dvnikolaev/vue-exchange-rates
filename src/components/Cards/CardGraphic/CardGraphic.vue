@@ -31,7 +31,7 @@ export default {
     };
   },
   async mounted() {
-    let day = new Date(2020, 7, 0).getDate();
+    let day = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
     let month = new Date().getMonth() + 1;
     let year = new Date().getFullYear();
 
