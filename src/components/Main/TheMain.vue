@@ -24,14 +24,13 @@
 </template>
 
 <script>
+import { getRates } from "@/services/index";
+
 import CardMain from "@/components/Cards/CardMain.vue";
 import CardSecondary from "@/components/Cards/CardSecondary.vue";
 import CardRates from "@/components/Cards/CardRates.vue";
 import CardMonth from "@/components/Cards/CardMonths/CardMonth.vue";
-
 import CardGraphic from "@/components/Cards/CardGraphic/CardGraphic";
-
-import axios from "axios";
 
 export default {
   data() {
@@ -63,10 +62,10 @@ export default {
       for (let key in rates) {
         arr.push({
           name: key,
-          value: rates[key].toFixed(2),
+          value: rates[key],
           change: (
-            (rates[key] - historyRates[key]).toFixed(2) /
-            historyRates[key].toFixed(2)
+            (rates[key] - historyRates[key]) /
+            historyRates[key]
           ).toFixed(2),
         });
       }
@@ -82,7 +81,7 @@ export default {
     await this.getRates();
 
     let baseMainRates = ["USD", "EUR", "RUB", "CAD"];
-
+    // Заполняем массив валют
     this.mainRates = this.rates.filter((item) => {
       return baseMainRates.some((elem) => {
         return item.name === elem;
@@ -97,35 +96,8 @@ export default {
     CardGraphic,
   },
 };
-
-function getPrevDay() {
-  let prevMilliSeconds = Date.now() - 1000 * 60 * 60 * 24 * 4;
-  let day = new Date(prevMilliSeconds).getDate();
-  let month = new Date(prevMilliSeconds).getMonth();
-  let year = new Date(prevMilliSeconds).getFullYear();
-
-  return `${year}-${month}-${day}`;
-}
-
-async function getRates(value) {
-  // Определяем предыдущий день
-  const prevDay = getPrevDay();
-  // Запрашиваем курс валют
-  const {
-    data: { rates },
-  } = await axios.get(`https://api.exchangerate.host/latest?base=${value}`);
-  // Запрашиваем курс валют за предыдущий день
-  const {
-    data: { rates: historyRates },
-  } = await axios.get(`https://api.exchangerate.host/${prevDay}?base=${value}`);
-
-  return {
-    rates,
-    historyRates,
-  };
-}
 </script>
 
 <style>
-@import '../../assets/stylesheets/Main/Main.css';
+@import "../../assets/stylesheets/Main/Main.css";
 </style>

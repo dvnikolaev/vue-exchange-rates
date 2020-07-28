@@ -10,6 +10,8 @@
 <script>
 import axios from 'axios';
 
+import { getDateString } from '@/services/index';
+
 export default {
   props: {
     activeMonth: Number
@@ -39,15 +41,6 @@ export default {
       )
     }
   }
-}
-
-function getDateString(num) {
-  let day = 30;
-  let month = new Date().getMonth() - num < 0 ? 12 - num : new Date().getMonth() - num;
-  month = month > 0 && month < 10 ? `0${month}` : month
-  let year = new Date().getFullYear();
-
-  return `${year}-${month}-${day}`
 }
 </script>
 
