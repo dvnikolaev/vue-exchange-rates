@@ -2,7 +2,7 @@
   <main class="main">
     <div class="card-main__wrapper">
       <CardMain :mainCurrency="mainCurrency" />
-      <CardMonth />
+      <CardMonth :mainCurrency="mainCurrency.name" />
     </div>
     <div class="card-secondary__wrapper">
       <CardSecondary

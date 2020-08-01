@@ -1,13 +1,13 @@
 <template>
   <article class="card-month">
     <header class="card-month__header">
-      <h2 class="card-month__name">Курс доллара за предыщие месяцы</h2>
+      <h2 class="card-month__name">Курс {{ mainCurrency }} за предыщие месяцы</h2>
     </header>
     <ListOfMonths
       :activeMonth="activeMonth"
       @update:activeMonth="setActiveMonth"
     />
-    <ListOfRates :activeMonth="activeMonth" />
+    <ListOfRates :activeMonth="activeMonth" :mainCurrency="mainCurrency" />
   </article>
 </template>
 
@@ -16,6 +16,9 @@ import ListOfMonths from "./ListOfMonths";
 import ListOfRates from "./ListOfRates";
 
 export default {
+  props: {
+    mainCurrency: String
+  },
   data() {
     return {
       activeMonth: 3,
