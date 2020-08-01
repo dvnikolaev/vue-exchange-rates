@@ -13,7 +13,7 @@
 <script>
 export default {
   props: {
-    percent: String,
+    percent: Number,
   },
   methods: {
     classChangePercent(value) {

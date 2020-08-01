@@ -63,7 +63,7 @@ export default {
         arr.push({
           name: key,
           value: rates[key].toFixed(2),
-          change: (
+          change: +(
             (rates[key] - historyRates[key]) /
             historyRates[key]
           ).toFixed(2),
