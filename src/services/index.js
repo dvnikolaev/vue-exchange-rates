@@ -2,12 +2,10 @@ import axios from "axios";
 
 // Получаем предыдущий день
 function getPrevDay() {
-  let prevMilliSeconds = Date.now() - 1000 * 60 * 60 * 24 * 4;
-  let day = new Date(prevMilliSeconds).getDate();
-  let month = new Date(prevMilliSeconds).getMonth();
-  let year = new Date(prevMilliSeconds).getFullYear();
-
-  return `${year}-${month}-${day}`;
+  let prevMilliSeconds = Date.now() - 1000 * 60 * 60 * 24;
+  // Формат YYYY-MM-DD
+  let date = new Date(prevMilliSeconds).toISOString().substr(0,10);
+  return date;
 }
 
 // Получаем курс валют
