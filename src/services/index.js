@@ -18,13 +18,13 @@ export const getRates = async (value) => {
   const {
     data: { rates },
   } = await axios.get(
-    `https://api.exchangerate.host/latest?base=${value}&places=2`
+    `https://api.exchangerate.host/latest?base=${value}`
   );
   // Запрашиваем курс валют за предыдущий день
   const {
     data: { rates: historyRates },
   } = await axios.get(
-    `https://api.exchangerate.host/${prevDay}?base=${value}&places=2`
+    `https://api.exchangerate.host/${prevDay}?base=${value}`
   );
 
   return {

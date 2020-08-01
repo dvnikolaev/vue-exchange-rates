@@ -62,7 +62,7 @@ export default {
       for (let key in rates) {
         arr.push({
           name: key,
-          value: rates[key],
+          value: rates[key].toFixed(2),
           change: (
             (rates[key] - historyRates[key]) /
             historyRates[key]
