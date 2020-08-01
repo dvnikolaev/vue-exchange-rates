@@ -10,11 +10,12 @@
 <script>
 import axios from 'axios';
 
-import { getDateString } from '@/services/index';
+import { getExchangeRatesForFourMonth } from '@/services/index';
 
 export default {
   props: {
-    activeMonth: Number
+    activeMonth: Number,
+    mainCurrency: String
   },
   data() {
     return {
@@ -27,18 +28,11 @@ export default {
     }
   },
   async created() {
-    let { data: { rates: firstMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(1)}?base=USD&symbols=CAD,EUR,RUB&places=2`);
-    let { data: { rates: secondMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(2)}?base=USD&symbols=CAD,EUR,RUB&places=2`);
-    let { data: { rates: thirdMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(3)}?base=USD&symbols=CAD,EUR,RUB&places=2`);
-    let { data: { rates: fourthMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(4)}?base=USD&symbols=CAD,EUR,RUB&places=2`);
-
-    for (let rate in firstMonth) {
-      this.rates.push(
-        {
-          name: rate,
-          values: [fourthMonth[rate], thirdMonth[rate], secondMonth[rate], firstMonth[rate]]
-        }
-      )
+    this.rates = await getExchangeRatesForFourMonth();
+  },
+  watch: {
+    async mainCurrency(val, oldVal) {
+      this.rates = await getExchangeRatesForFourMonth(val);
     }
   }
 }
