@@ -14,7 +14,7 @@
         @update:secondary="updateMainRates"
       />
     </div>
-    <CardGraphic />
+    <CardGraphic :mainCurrency="mainCurrency.name" />
     <CardRates
       :mainCurrencyName="mainCurrency.name"
       :rates="rates"
