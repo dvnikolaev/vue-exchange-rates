@@ -8,13 +8,10 @@ function getPrevDay() {
   return date;
 }
 // Получаем строку даты вида YYYY-MM-DD
-function getDateString(num) {
-  let day = 30;
-  let month = new Date().getMonth() - num < 0 ? 12 - num : new Date().getMonth() - num;
-  month = month > 0 && month < 10 ? `0${month}` : month
-  let year = new Date().getFullYear();
-
-  return `${year}-${month}-${day}`
+function getDateStringForPrevMonths(num) {
+  let date = new Date(new Date().getFullYear(), new Date().getMonth() - num + 1, 1).toISOString().substr(0,10);
+  
+  return date;
 }
 
 // Получаем курс валют
@@ -49,10 +46,10 @@ export const getNamePrevMonth = (num) => {
 // Получаем курс валют за последние 4 месяца 
 
 export const getExchangeRatesForFourMonth = async (currency = 'USD') => {
-  const { data: { rates: firstMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(1)}?base=${currency}&symbols=USD,EUR,RUB`);
-  const { data: { rates: secondMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(2)}?base=${currency}&symbols=USD,EUR,RUB`);
-  const { data: { rates: thirdMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(3)}?base=${currency}&symbols=USD,EUR,RUB`);
-  const { data: { rates: fourthMonth } } = await axios.get(`https://api.exchangerate.host/${getDateString(4)}?base=${currency}&symbols=USD,EUR,RUB`);
+  const { data: { rates: firstMonth } } = await axios.get(`https://api.exchangerate.host/${getDateStringForPrevMonths(1)}?base=${currency}&symbols=USD,EUR,RUB`);
+  const { data: { rates: secondMonth } } = await axios.get(`https://api.exchangerate.host/${getDateStringForPrevMonths(2)}?base=${currency}&symbols=USD,EUR,RUB`);
+  const { data: { rates: thirdMonth } } = await axios.get(`https://api.exchangerate.host/${getDateStringForPrevMonths(3)}?base=${currency}&symbols=USD,EUR,RUB`);
+  const { data: { rates: fourthMonth } } = await axios.get(`https://api.exchangerate.host/${getDateStringForPrevMonths(4)}?base=${currency}&symbols=USD,EUR,RUB`);
 
   let rates = [];
 
@@ -64,6 +61,42 @@ export const getExchangeRatesForFourMonth = async (currency = 'USD') => {
       }
     )
   }
-  console.log(rates);
+
   return rates;
+}
+
+// Получаем курс валют для графика
+export const getExchangeRatesForMonth = async (currency) => {
+  let currentMonthExchange = [];
+  let prevMonthExchange = [];
+
+  const currentMonth = {
+    startDate: new Date(new Date().getFullYear(), new Date().getMonth(), 2).toISOString().substr(0,10),
+    endDate: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toISOString().substr(0,10)
+  }
+
+  const prevMonth = {
+    startDate: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 2).toISOString().substr(0,10),
+    endDate: new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString().substr(0,10) 
+  }
+  
+  const { data: { rates: currentMonthRates } } = await axios.get(`https://api.exchangerate.host/timeseries?start_date=${currentMonth.startDate}&end_date=${currentMonth.endDate}&base=${currency}&symbols=RUB`);
+  const { data: { rates: prevMonthRates } } = await axios.get(`https://api.exchangerate.host/timeseries?start_date=${prevMonth.startDate}&end_date=${prevMonth.endDate}&base=${currency}&symbols=RUB`);
+  
+  for (let key in currentMonthRates) {
+    for (let key2 in currentMonthRates[key]) {
+      currentMonthExchange.push(+currentMonthRates[key][key2].toFixed(2));
+    }
+  }
+
+  for (let key in prevMonthRates) {
+    for (let key2 in prevMonthRates[key]) {
+      prevMonthExchange.push(+prevMonthRates[key][key2].toFixed(2));
+    }
+  }
+
+  return {
+    currentMonthExchange,
+    prevMonthExchange
+  }
 }
