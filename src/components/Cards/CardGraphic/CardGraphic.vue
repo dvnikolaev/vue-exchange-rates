@@ -1,25 +1,48 @@
 <template>
   <div class="card-graphic">
-    <canvas ref="canvas"></canvas>
+    <canvas
+      ref="canvas"
+      v-show="
+        chartData.datasets[0].data.length || chartData.datasets[1].data.length
+      "
+    ></canvas>
+    <Spinner
+      v-show="
+        !chartData.datasets[0].data.length || !chartData.datasets[1].data.length
+      "
+    />
   </div>
 </template>
 
 <script>
 import { Line } from "vue-chartjs";
-import axios from "axios";
+
+import { getExchangeRatesForMonth } from "@/services/index";
+
+import Spinner from "@/components/Spinner";
 
 export default {
   extends: Line,
+  props: {
+    mainCurrency: String,
+  },
   data() {
     return {
       chartData: {
         labels: [],
         datasets: [
           {
-            label: "Курс рубля к доллару за текущий месяц",
+            label: `Курс USD / RUB за текущий месяц`,
             data: [],
             backgroundColor: "rgba(255, 99, 132, 0.2)",
             borderColor: "rgba(255, 99, 132, 1)",
+            borderWidth: 1,
+          },
+          {
+            label: `Курс USD / RUB за предыщуий месяц`,
+            data: [],
+            backgroundColor: "rgba(99, 132, 255, 0.2)",
+            borderColor: "rgba(99, 132, 255, 1)",
             borderWidth: 1,
           },
         ],
@@ -30,36 +53,39 @@ export default {
       },
     };
   },
-  async mounted() {
-    let day = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
-    let month = new Date().getMonth() + 1;
-    let year = new Date().getFullYear();
+  methods: {
+    async getExchangeRates(currency = "USD") {
+      const {
+        currentMonthExchange,
+        prevMonthExchange,
+      } = await getExchangeRatesForMonth(currency);
 
-    if (day > 0 && day < 10) {
-      day = `0${day}`;
-    }
+      this.chartData.datasets[0].data = currentMonthExchange;
+      this.chartData.datasets[1].data = prevMonthExchange;
 
-    if (month > 0 && month < 10) {
-      month = `0${month}`;
-    }
-
-    for (let i = 1; i <= day; i++) {
+      this.renderChart(this.chartData, this.options);
+    },
+  },
+  mounted() {
+    for (let i = 1; i <= 31; i++) {
       this.chartData.labels.push(`${i}`);
     }
 
-    const {
-      data: { rates },
-    } = await axios(
-      `https://api.exchangerate.host/timeseries?start_date=2020-${month}-01&end_date=2020-${month}-${day}&base=USD&symbols=RUB&places=2`
-    );
+    this.getExchangeRates();
+  },
+  watch: {
+    async mainCurrency(val, oldVal) {
+      this.chartData.datasets[0].data = [];
+      this.chartData.datasets[1].data = [];
 
-    for (let key in rates) {
-      for (let key2 in rates[key]) {
-        this.chartData.datasets[0].data.push(rates[key][key2]);
-      }
-    }
+      this.getExchangeRates(val);
 
-    this.renderChart(this.chartData, this.options);
+      this.chartData.datasets[0].label = `Курс ${this.mainCurrency} / RUB за текущий месяц`;
+      this.chartData.datasets[1].label = `Курс ${this.mainCurrency} / RUB за предыдущий месяц`;
+    },
+  },
+  components: {
+    Spinner,
   },
 };
 </script>
