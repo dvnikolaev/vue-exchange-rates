@@ -1,5 +1,6 @@
 /* Список валют */
 .card-month-rates {
+  position: relative;
   list-style: none;
   padding: 0 10px;
 }
